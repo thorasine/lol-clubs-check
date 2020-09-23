@@ -4,7 +4,11 @@ from riotwatcher import LolWatcher, ApiError
 import time
 
 connector = Connector()
-lol_watcher = LolWatcher('RGAPI-9f267568-a052-4e83-9ce8-53d3d8723ad4')
+
+f = open("riot-api-code.txt", 'r')
+riotApiCode = f.readline()
+f.close()
+lol_watcher = LolWatcher(riotApiCode)
 
 
 async def club_inactives(club_name):
@@ -72,7 +76,7 @@ async def friendlist_inactives():
 
 
 async def set_icon():
-    #55 29 66
+    # 55 29 66
     icon = await connector.request('put', '/lol-summoner/v1/current-summoner/icon', data=dumps({'profileIconId': 29}))
     # if HTTP status code is 201 the icon was applied successfully
     if icon.status == 201:
@@ -109,9 +113,9 @@ async def disconnect():
 @connector.ws_events(['/lol-summoner/v1/current-summoner'], event_types=['Update'], max_calls=1)
 async def login(typ, uri, data):
     print('Logged as', data['displayName'])
-    #await friendlist_inactives()
+    # await friendlist_inactives()
     await club_inactives("Nami")
-    #await set_icon()
+    # await set_icon()
 
 
 # opens websocket connection (may be used to wait until the client is closed)
