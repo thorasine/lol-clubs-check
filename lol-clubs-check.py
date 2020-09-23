@@ -4,7 +4,7 @@ from riotwatcher import LolWatcher, ApiError
 import time
 
 connector = Connector()
-lol_watcher = LolWatcher('RGAPI-2765c4d9-a2d2-4918-953a-0cda35aafd1d')
+lol_watcher = LolWatcher('RGAPI-9f267568-a052-4e83-9ce8-53d3d8723ad4')
 
 
 async def club_inactives(club_name):
@@ -110,8 +110,8 @@ async def disconnect():
 async def login(typ, uri, data):
     print('Logged as', data['displayName'])
     #await friendlist_inactives()
-    #await club_inactives("Janna")
-    await set_icon()
+    await club_inactives("Nami")
+    #await set_icon()
 
 
 # opens websocket connection (may be used to wait until the client is closed)
