@@ -2,7 +2,7 @@ from riotwatcher import LolWatcher
 import time
 
 f = open("resources/00inactives.txt", "w+")
-lol_watcher = LolWatcher('RGAPI-8e55f644-1da7-4a40-be9c-83beaea42b3d')
+lol_watcher = LolWatcher('')
 print("Hey")
 
 for i in range(2):
